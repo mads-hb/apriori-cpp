@@ -32,7 +32,6 @@ Database read_data(std::filesystem::path path){
         while ( getline (data_file,line)) {
             auto line_vector = parse_line(line);
             res.push_back(line_vector);
-            i++;
         }
         data_file.close();
         return res;
@@ -50,7 +49,7 @@ int main() {
     auto toc = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(toc - tic);
     std::cout << "Running took " << duration.count() * 1e-3 << "seconds." << std::endl;
-    std::cout << "All item sets and their support:"
+    std::cout << "All item sets and their support:" << std::endl;
     for (auto const &item_set: res){
         for (auto const &key: item_set.first){
             std::cout << key << ", ";
